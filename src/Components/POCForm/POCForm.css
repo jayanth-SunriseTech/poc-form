@@ -1,0 +1,18 @@
+.blue-gradient{
+    background:linear-gradient(40deg,#303f9f,#2096ff)!important;
+}
+
+.signup__page{
+    
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+}
+
+.bg-info{
+    background-color: #17a2b8!important;
+}
