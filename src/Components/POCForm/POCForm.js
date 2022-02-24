@@ -4,15 +4,13 @@ import * as Yup from "yup";
 import "./POCForm.css";
 
 function POCForm() {
-  const validate = Yup.object({
-    tokenName: Yup.string()
-      .min(3, "Must be atleast 3 characters")
-      .required("Required"),
-    tokenSymbol: Yup.string()
-      .required("Symbol is required")
-      .min(2, "Must be atleast 2 characters"),
-    initialSupply: Yup.number().required("Password is required!"),
-  });
+ 
+  const [tokenName,setTokenName] = useState(null);
+  const [tokenSymbol,setTokenSymbo] = useState(null);
+  const [initialSupply,setInitialSupply] = useState(null);
+  const [totallSupply,setTotalSupply] = useState(null);
+  const [network,setNetwork] = useState(null);
+ 
 
   //   const navigate = useNavigate();
   //   const [loading, setLoading] = useState(false);
@@ -79,6 +77,7 @@ function POCForm() {
                                 id="exampleInputEmail1"
                                 aria-describedby="emailHelp"
                                 placeholder="Your token name"
+                                onChange={(e)=>setTokenName(e.target.value)}
                               />
                               <small
                                 id="emailHelp"
@@ -99,6 +98,7 @@ function POCForm() {
                                 id="exampleInputEmail1"
                                 aria-describedby="emailHelp"
                                 placeholder="Your token symbol"
+                                onChange={(e)=>setTokenSymbo(e.target.value)}
                               />
                               <small
                                 id="emailHelp"
@@ -141,6 +141,7 @@ function POCForm() {
                                 id="exampleInputEmail1"
                                 aria-describedby="emailHelp"
                                 placeholder="Enter email"
+                                onChange={(e)=>setInitialSupply(e.target.value)}
                               />
                               <small
                                 id="emailHelp"
@@ -162,6 +163,7 @@ function POCForm() {
                                 id="exampleInputEmail1"
                                 aria-describedby="emailHelp"
                                 placeholder="Enter email"
+                                onChange={(e)=>setTotalSupply(e.target.value)}
                               />
                               <small
                                 id="emailHelp"
@@ -421,6 +423,7 @@ function POCForm() {
                             <select
                               class="form-control"
                               id="exampleFormControlSelect1"
+                              onChange={e => setNetwork(e.target.value)}
                             >
                               <option>Main Ethereum Network</option>
                               <option>Ropsten Test Network</option>
