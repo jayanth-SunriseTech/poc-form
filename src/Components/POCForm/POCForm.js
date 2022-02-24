@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import * as Yup from "yup";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 
 import "./POCForm.css";
 
@@ -12,34 +14,34 @@ function POCForm() {
   const [network,setNetwork] = useState(null);
  
 
-  //   const navigate = useNavigate();
-  //   const [loading, setLoading] = useState(false);
-  //   const [success, setSuccess] = useState(false);
-  //   const [failure, setFailure] = useState(false);
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [failure, setFailure] = useState(false);
 
-  //   const postData = async (data) => {
-  //     setLoading(true);
-  //     try {
-  //       let Data = await axios.post(`${env.api}/signup`, data);
-  //       window.alert("User registered successfully");
-  //       setLoading(false);
-  //       setFailure(false);
-  //       setSuccess(true);
-  //       navigate("/signin");
-  //     } catch (error) {
-  //       setLoading(false);
-  //       setFailure(true);
-  //       if (error.message === "Request failed with status code 400") {
-  //         window.alert(
-  //           "E-mail is already registered.Please use different e-mail ID."
-  //         );
-  //         console.log(error);
-  //       } else {
-  //         window.alert("Check your connection");
-  //         console.log(error);
-  //       }
-  //     }
-  //   };
+    const postData = async (data) => {
+      setLoading(true);
+      try {
+        let Data = await axios.post(`localhost:8080/signup`, data);
+        window.alert("User registered successfully");
+        setLoading(false);
+        setFailure(false);
+        setSuccess(true);
+        navigate("/signin");
+      } catch (error) {
+        setLoading(false);
+        setFailure(true);
+        if (error.message === "Request failed with status code 400") {
+          window.alert(
+            "E-mail is already registered.Please use different e-mail ID."
+          );
+          console.log(error);
+        } else {
+          window.alert("Check your connection");
+          console.log(error);
+        }
+      }
+    };
   return (
     <>
       <div className="signup__page">
@@ -494,7 +496,7 @@ function POCForm() {
                       </div>
                     </div>
                     <div className="row">
-                    <button style={{width:'466px',marginLeft:'21px'}} className="btn ml-2 mb-3 mt-3 py-3 px-5 text-uppercase btn-success btn-lg btn-block">
+                    <button onClick={postData} style={{width:'466px',marginLeft:'21px'}} className="btn ml-2 mb-3 mt-3 py-3 px-5 text-uppercase btn-success btn-lg btn-block">
                       CONFIRM
                     </button>
                     </div>
